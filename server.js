@@ -198,5 +198,5 @@ app.get('/api/order/:id', async (req, res) => {
     res.json({ orderId: row.id, kind: row.kind, productId: row.product_id, productName: row.product_name, status: row.status, fulfilled: row.fulfilled, amountCents: row.amount_cents, paidAt: row.paid_at });
   } catch (e) { res.status(500).json({ error: 'erro_consulta' }); }
 });
-
+app.get('/', (req, res) => res.sendFile(require('path').join(__dirname, 'index.html')));
 initDb().then(() => app.listen(PORT, '0.0.0.0', () => console.log(`Bolada Perfeita V90 ouvindo na porta ${PORT}`))).catch(e => { console.error('Falha ao inicializar banco:', e); process.exit(1); });
